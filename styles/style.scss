@@ -14,10 +14,16 @@
 //Pages
 @import "index";
 
+// Buttons
+@import "buttons";
+
 // Components
 @import "nav";
 @import "header";
 @import "footer";
+
+@import "map";
+@import "map-icons";
 
 @import "location-gallery";
 @import "location-card";

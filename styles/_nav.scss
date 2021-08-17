@@ -35,12 +35,3 @@
     }
   }
 }
-
-.progress-bar {
-  @include wh(100%, 3px);
-
-  .bar {
-    @include wh(2px, 3px);
-    background: $lightblue;
-  }
-}

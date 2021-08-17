@@ -26,6 +26,7 @@
 
     .card-title {
       margin-bottom: #{0.5 * $spacing};
+      text-transform: uppercase;
     }
 
     .card-hr {
@@ -37,6 +38,10 @@
 
     .card-description {
       color: $dark-grey;
+    }
+
+    .button {
+      max-width: 200px;
     }
   }
 }

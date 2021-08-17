@@ -2,13 +2,17 @@ import Head from 'next/head';
 import LocationGallery from "../../components/LocationGallery";
 import TopNav from "../../components/TopNav";
 
-const Home = ({locations}) => {
+import { fetchAPI } from "../../lib/api";
+import { withRouter } from 'next/router';
+
+const Home = ({locations, city}) => {
     return (
         <div className="container">
             <Head>
                 <title>Openbaar sporten</title>
                 <meta name="description" content="Openbaar sporten"/>
                 <link rel="icon" href="/favicon.ico"/>
+                <link href='https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css' rel='stylesheet' />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
                 <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
@@ -17,19 +21,22 @@ const Home = ({locations}) => {
             <TopNav />
 
             <main className="main">
-                <LocationGallery locations={locations} county="Amsterdam" />
+                <LocationGallery city={city} locations={locations} county="Amsterdam" />
             </main>
         </div>
     )
 }
 
-export async function getStaticProps() {
-    const res = await fetch('https://api.jorisheijkant.nl/apps/sportparken/data/sportparken.json')
-    const locations = await res.json();
+export async function getStaticProps(context) {
+    // STRAPI FETCH
+    const citySlug = context.params.id;
+    const city = await fetchAPI(`/cities?slug=${citySlug}`);
+    const locations = await fetchAPI(`/locations?cities.slug=${citySlug}`);
 
     return {
         props: {
-            locations
+            city: city[0],
+            locations: locations
         },
     }
 }

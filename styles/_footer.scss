@@ -1,7 +1,7 @@
 .sw-footer {
   @include wh(100%, auto);
   min-height: 10px;
-  background-color: $green;
+  background-color: $lightgrey;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

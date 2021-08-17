@@ -17,9 +17,9 @@
   }
 
   .map {
-    @include wh(100%, 100vh);
+    height: calc(100vh - 50px);
     position: sticky;
-    top: 0;
+    top: 50px;
     background: $light-grey;
   }
 }

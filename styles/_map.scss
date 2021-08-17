@@ -1,0 +1,27 @@
+.map-wrapper {
+  width: 100%;
+  height: calc(100vh - 50px);
+  position: relative;
+
+  .map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include wh(100%);
+  }
+
+  .map-marker {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: white;
+    border: 2px solid $dark-grey;
+    @include flex-center();
+
+    .icon {
+      @include wh(20px);
+      background: red;
+    }
+  }
+}
