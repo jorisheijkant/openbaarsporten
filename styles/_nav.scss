@@ -1,0 +1,46 @@
+.navbar-wrapper {
+  @include wh(100%, 50px);
+  @include flex-center();
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $white;
+  z-index: 5;
+
+  overflow: hidden;
+}
+
+.navbar {
+  @include wh(100%, 50px);
+  border-bottom: 1px solid $light-grey;
+
+  display: grid;
+  grid-template-columns: 100px auto 100px;
+
+  .nav-logo {
+    @include flex-center();
+
+    .logo-img {
+      @include wh(60px, auto);
+      transform: translateY(2px);
+    }
+  }
+
+  .menu-toggle {
+    @include flex-center();
+    cursor: pointer;
+
+    .burger-icon {
+      @include wh(40px, 50px);
+    }
+  }
+}
+
+.progress-bar {
+  @include wh(100%, 3px);
+
+  .bar {
+    @include wh(2px, 3px);
+    background: $lightblue;
+  }
+}

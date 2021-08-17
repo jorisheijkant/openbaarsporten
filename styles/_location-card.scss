@@ -1,0 +1,50 @@
+.location-card {
+  @include wh(100%, auto);
+  min-height: 200px;
+  display: grid;
+  grid-template-columns: 300px auto;
+  grid-gap: #{1 * $spacing};
+  position: relative;
+
+  .location-card-image {
+    @include wh(100%, auto);
+    position: relative;
+
+    .image {
+      @include wh(100%, auto);
+      object-fit: cover;
+    }
+  }
+
+  .card-content {
+
+    .card-label {
+      color: $dark-grey;
+      text-transform: capitalize;
+      margin-bottom: 3px;
+    }
+
+    .card-title {
+      margin-bottom: #{0.5 * $spacing};
+    }
+
+    .card-hr {
+      @include wh(80px, 1px);
+      border: none;
+      background: $light-grey;
+      margin-bottom: #{0.5 * $spacing};
+    }
+
+    .card-description {
+      color: $dark-grey;
+    }
+  }
+}
+
+.location-card:before {
+  content: '';
+  position: absolute;
+  top: #{-1 * $spacing};
+  @include wh(100%, 1px);
+  background: $grey;
+}

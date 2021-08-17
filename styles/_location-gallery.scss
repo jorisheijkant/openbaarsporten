@@ -1,0 +1,25 @@
+.location-gallery {
+  @include wh(100%, auto);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0;
+
+  .gallery-wrapper {
+    @include wh(100%, auto);
+    padding: #{1 * $spacing};
+  }
+
+  .gallery-wrapper .gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: #{2 * $spacing};
+    margin: #{3 * $spacing} 0;
+  }
+
+  .map {
+    @include wh(100%, 100vh);
+    position: sticky;
+    top: 0;
+    background: $light-grey;
+  }
+}

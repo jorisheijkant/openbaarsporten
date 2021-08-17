@@ -1,0 +1,143 @@
+$transition: clip-path 0.2s ease;
+
+.header {
+  @include wh(100%, auto);
+  @include flex-center();
+  min-height: 100vh;
+  position: relative;
+
+  .panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .image-panel {
+    z-index: 2;
+
+    .mobile-image {
+      width: 100%;
+      height: 50vh;
+      object-fit: contain;
+      background: #FFFFFF;
+      @include respond-from($screen-sm) {
+        display: none;
+      }
+
+      transition: $transition;
+    }
+
+    .desktop-image {
+      width: 50%;
+      height: 100vh;
+      object-fit: contain;
+      background: #FFFFFF;
+      @include respond-until($screen-sm) {
+        display: none;
+      }
+
+      transition: $transition;
+    }
+  }
+
+  .color-overlay {
+    background: $green;
+    z-index: 1;
+
+    transition: $transition;
+  }
+
+  .content-panel, .content-panel-lit {
+    @include flex-center();
+
+    padding: $spacing;
+    background: #ffffff;
+    color: $black;
+    text-align: center;
+
+    transition: $transition;
+
+    .title {
+      margin-bottom: #{0.25 * $spacing};
+    }
+
+    .scroll-helper {
+      position: absolute;
+      bottom: $spacing;
+      animation: hobble 2.5s ease-in-out infinite;
+
+      @include respond-until($screen-sm) {
+        display: none;
+      }
+
+      .scroll-helper-text {
+        margin-bottom: 0;
+        font-size: 1rem;
+      }
+
+      .scroll-helper-icon {
+        margin-bottom: 0;
+        transform: translateY(-3px);
+      }
+    }
+
+    @include respond-until($screen-sm) {
+      width: 100%;
+      height: 50vh;
+      top: 50vh;
+
+      padding: #{0.5 * $spacing};
+    }
+
+    @include respond-from($screen-sm) {
+      width: 50%;
+      height: 100vh;
+      left: 50%;
+    }
+  }
+
+  .content-panel {
+    z-index: 4;
+  }
+
+  .content-panel-lit {
+    z-index: 3;
+    color: $white;
+    background: transparent;
+    pointer-events: none;
+  }
+
+  .panel.gyro-tester {
+    z-index: 10;
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    @include respond-from($screen-sm) {
+      display: none;
+    }
+
+    p {
+      background: $white;
+      color: $black;
+      border: 1px solid;
+      padding: 3px;
+    }
+  }
+}
+
+@keyframes hobble {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,112 @@
+//base typography, only html elements, no specific classes
+
+// Maximum width for a paragraph
+
+html, body {
+  font-size: $base-size+px;
+  color: $black;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input {
+  @include typogram($body);
+}
+
+p, a {
+  @include typogram($body);
+  font-weight: normal;
+}
+
+a:visited {
+  color: $black;
+  text-decoration: underline;
+}
+
+ul, ol {
+  list-style-position: inside;
+
+  li {
+    @include typogram($body);
+  }
+}
+
+table {
+  @include typogram($body);
+}
+
+h1 {
+  @include typogram($h1);
+}
+
+h2 {
+	@include typogram($h2);
+	font-weight: bold;
+}
+
+h3 {
+  @include typogram($h3);
+}
+
+h4 {
+  @include typogram($h4);
+  font-weight: normal;
+}
+
+h5 {
+  @include typogram($h5);
+}
+
+h6 {
+  @include typogram($h6);
+}
+
+h1,h2,h3,h4,h5,h6 {
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  a{
+    text-decoration: underline;
+  }
+}
+
+figcaption {
+  @include typogram($caption);
+}
+
+blockquote {
+  @include typogram($quote);
+}
+
+form {
+  legend, p, label, input, select, option, textarea {
+    @include typogram($body);
+  }
+}
+
+code {
+  background: #eee;
+  padding: 0 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin: 0 5px;
+  font-size: 20px;
+  text-transform: lowercase;
+}
+
+.lead {
+  @include typogram($lead);
+}
+
+.label {
+  text-transform: uppercase;
+  @include typogram($label);
+  font-weight: 400;
+
+  strong {
+    font-weight: 900;
+  }
+}

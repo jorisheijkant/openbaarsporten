@@ -1,0 +1,51 @@
+// Do a reset
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+// Set REM here
+html {
+	font-size: 10px;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	//overflow-x: hidden;
+
+	/* Better Font Rendering =========== */
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body.no-scroll {
+	overflow: hidden;
+}
+
+a {
+	color: inherit;
+}
+
+// These elements don't inherit the font styles by default
+input, select, textarea, button {
+	font: inherit;
+}
+
+img {
+	border: 0; // Be kind for IE9
+}
+
+.container {
+	//overflow-x: hidden;
+}
+
+.main {
+	margin-top: 50px;
+}

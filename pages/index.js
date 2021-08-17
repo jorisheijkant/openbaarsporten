@@ -1,30 +1,36 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css';
+import Head from 'next/head';
+import Image from 'next/image';
 import LocationButton from "../components/LocationButton";
 import LocationSearch from "../components/LocationSearch";
 import LocationGallery from "../components/LocationGallery";
+import CityGallery from "../components/CityGallery";
+import TopNav from "../components/TopNav";
 
 const Home = ({locations}) => {
     return (
-        <div className={styles.container}>
+        <div className="container">
             <Head>
                 <title>Openbaar sporten</title>
-                <meta name="description" content="Openbaar sporten"/>
-                <link rel="icon" href="/favicon.ico"/>
+                <meta name="description" content="Openbaar sporten" />
+                <link rel="icon" href="/favicon.ico" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+                <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
             </Head>
 
-            <main className={styles.main}>
+            <TopNav />
+
+            <main className="main">
                 <div className="header">
-                    <h1 className={styles.title}>Openbaar sporten</h1>
-                    <p className={styles.lead}>Op zoek naar een tafeltennistafel of voetbalveld bij jou in de buurt? Wij verzamelen alle openbare sportgelegenheden in Nederland.</p>
+                    <h1 className="title">Openbaar sporten</h1>
+                    <p className="lead">Op zoek naar een tafeltennistafel of voetbalveld bij jou in de buurt? Wij verzamelen alle openbare sportgelegenheden in Nederland.</p>
 
-                    <LocationButton />
-                    <LocationSearch />
+                    {/*Add location search when there's actually something to you know, search for*/}
+                    {/*<LocationButton />*/}
+                    {/*<LocationSearch />*/}
+
+                    <CityGallery cities={['Amsterdam', 'Rotterdam', 'Eindhoven']} />
                 </div>
-
-                <LocationGallery locations={locations} county="Amsterdam" />
-
             </main>
         </div>
     )

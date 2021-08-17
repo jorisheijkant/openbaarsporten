@@ -1,0 +1,143 @@
+// _decimal.scss | MIT License | gist.github.com/terkel/4373420
+
+// Round a number to specified digits.
+//
+// @param  {Number} $number A number to round
+// @param  {Number} [$digits:0] Digits to output
+// @param  {String} [$mode:round] (round|ceil|floor) How to round a number
+// @return {Number} A rounded number
+// @example
+//     decimal-round(0.333)    => 0
+//     decimal-round(0.333, 1) => 0.3
+//     decimal-round(0.333, 2) => 0.33
+//     decimal-round(0.666)    => 1
+//     decimal-round(0.666, 1) => 0.7
+//     decimal-round(0.666, 2) => 0.67
+//
+@function decimal-round ($number, $digits: 0, $mode: round) {
+  $n: 1;
+  // $number must be a number
+  @if type-of($number) != number {
+    @warn '#{$number} is not a number.';
+    @return $number;
+  }
+  // $digits must be a unitless number
+  @if type-of($digits) != number {
+    @warn '#{$digits} is not a number.';
+    @return $number;
+  } @else if not unitless($digits) {
+    @warn '#{$digits} has a unit.';
+    @return $number;
+  }
+  @for $i from 1 through $digits {
+    $n: $n * 10;
+  }
+  @if $mode == round {
+    @return round($number * $n) / $n;
+  } @else if $mode == ceil {
+    @return ceil($number * $n) / $n;
+  } @else if $mode == floor {
+    @return floor($number * $n) / $n;
+  } @else {
+    @warn '#{$mode} is undefined keyword.';
+    @return $number;
+  }
+}
+
+// Ceil a number to specified digits.
+//
+// @param  {Number} $number A number to round
+// @param  {Number} [$digits:0] Digits to output
+// @return {Number} A ceiled number
+// @example
+//     decimal-ceil(0.333)    => 1
+//     decimal-ceil(0.333, 1) => 0.4
+//     decimal-ceil(0.333, 2) => 0.34
+//     decimal-ceil(0.666)    => 1
+//     decimal-ceil(0.666, 1) => 0.7
+//     decimal-ceil(0.666, 2) => 0.67
+//
+@function decimal-ceil ($number, $digits: 0) {
+  @return decimal-round($number, $digits, ceil);
+}
+
+// Floor a number to specified digits.
+//
+// @param  {Number} $number A number to round
+// @param  {Number} [$digits:0] Digits to output
+// @return {Number} A floored number
+// @example
+//     decimal-floor(0.333)    => 0
+//     decimal-floor(0.333, 1) => 0.3
+//     decimal-floor(0.333, 2) => 0.33
+//     decimal-floor(0.666)    => 0
+//     decimal-floor(0.666, 1) => 0.6
+//     decimal-floor(0.666, 2) => 0.66
+//
+@function decimal-floor ($number, $digits: 0) {
+  @return decimal-round($number, $digits, floor);
+}
+
+// calculate font size in ems based on font size in px and base size in px
+@function get-rems($font-size,$base-size: $base-size){
+  @return decimal-floor(($font-size/$base-size),2)+rem
+}
+
+// calculate line-height based on font size and line height in px
+@function get-lh($font-size,$line-height){
+  @return decimal-floor(($line-height/$font-size),2)+em
+}
+@function line-height($font-size,$line-height){
+  @return decimal-floor(($line-height/$font-size),2)+em
+}
+
+// includes font-family and responsive font-size
+@mixin typogram($typogram, $fs-breakpoints: $breakpoints) {
+  // need to dynamically include font-family based on var
+  @if map-has-key($typogram, 'style') {
+    font-family: map-get($typogram, 'style');
+  }
+  @if map-has-key($typogram, 'letter-spacing') {
+    letter-spacing: map-get($typogram, 'letter-spacing');
+  }
+  @if map-has-key($typogram, 'text-transform') {
+    text-transform: map-get($typogram, 'text-transform');
+  }
+  @if map-has-key($typogram, 'sizes') {
+    // include responsive font sizes
+    @include font-size(map-get($typogram, 'sizes'));
+  }
+}
+
+@mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      @include make-font-size($fs-font-size);
+    }
+    @else {
+      // If $fs-font-size is a key that exists in
+      // $fs-breakpoints, use the value
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint) {
+        @include make-font-size($fs-font-size);
+      }
+    }
+  }
+}
+
+// Utility function for mixin font-size
+@mixin make-font-size($fs-font-size) {
+  // If $fs-font-size is a list, include
+  // both font-size and line-height
+  @if type-of($fs-font-size) == "list" {
+    font-size: nth($fs-font-size, 1);
+    @if (length($fs-font-size) > 1) {
+      line-height: nth($fs-font-size, 2);
+    }
+  }
+  @else {
+    font-size: $fs-font-size;
+  }
+}

@@ -1,0 +1,11 @@
+.index {
+  @include wh(100%, auto);
+  @include flex-center();
+  color: $black;
+  //background: $off-white;
+  margin-top: 0px;
+
+  .slice-wrapper {
+    @include wh(100%, auto);
+  }
+}

@@ -1,13 +1,17 @@
 import Image from "next/image";
 
-const locationCard = ({title, latlong}) => {
+const locationCard = ({location, title}) => {
     return (
         <div className="location-card">
-            <Image src="/img/placeholder.jpg"
-                   width={200}
-                   height={200} />
+            <div className="location-card-image">
+                <Image className="image" src="/img/placeholder.jpg" layout="fill" />
+            </div>
+
             <div className="card-content">
-                <h2>{title}</h2>
+                <h4 className="card-label">{location.type}</h4>
+                <h2 className="card-title">{title}</h2>
+                <hr className="card-hr" />
+                <p className="card-description">Mooi gelegen skatepark. Enkele halfpipes en boxes, maar ook geschikt voor beginnende skaters.</p>
             </div>
         </div>
     )

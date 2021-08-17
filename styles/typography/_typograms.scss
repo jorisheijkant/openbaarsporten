@@ -1,0 +1,191 @@
+// Many thanks and credits to Thijs Gadiot for his work on compiling typography using sass typograms
+
+// Set up a global typogram variable
+$typogram-names: (h1,h2,h3,h4,body,header,button,quote,caption,lead,label,dropcap);
+
+// define base sizes, equals 1em.
+$base-size: 10;
+$base-size-px: 10px;
+$default-line-height: 1.2em;
+$max-p-width: 70em;
+
+
+// define breakpoints used for responsive typography
+// TAKEN FROM BREAKPOINTS FILE
+$breakpoints: (
+        small : $screen-xs,
+        medium: $screen-sm,
+        large : $screen-md
+);
+
+//
+// TYPOGRAMMEN
+//
+
+// h1
+$h1-font-family: $space;
+$h1-font-sizes: (
+        null  : (get-rems(36), 1.1),
+        small : (get-rems(36), 1.1),
+        medium: (get-rems(44), 1.07),
+        large : (get-rems(44), 1.07),
+);
+$h1: (
+        style : $h1-font-family,
+        sizes : $h1-font-sizes
+);
+
+// h2
+$h2-font-family: $space;
+//$h2-leading: line-height(100,108);
+$h2-font-sizes: (
+        null  : (get-rems(22), 1.1),
+        small : (get-rems(22), 1.1),
+        medium: (get-rems(26), 1.07),
+        large : (get-rems(30), 1.07),
+);
+$h2: (
+        style : $h2-font-family,
+        sizes : $h2-font-sizes
+);
+
+// h3
+$h3-font-family: $space;
+$h3-font-sizes: (
+        null  : (get-rems(24), 1.1),
+        small : (get-rems(24), 1.1),
+        medium: (get-rems(26), 1.11),
+        large : (get-rems(26), 1.11),
+);
+$h3: (
+        style : $h3-font-family,
+        sizes : $h3-font-sizes
+);
+
+// h4
+$h4-font-family: $space;
+$h4-font-sizes: (
+        null  : (get-rems(18), 1.1),
+        small : (get-rems(18), 1.1),
+        medium: (get-rems(18), 1.1),
+        large : (get-rems(18), 1.1),
+);
+$h4: (
+        style : $h4-font-family,
+        sizes : $h4-font-sizes
+);
+
+// h5
+$h5-font-family: $space;
+$h5-font-sizes: (
+        null  : (get-rems(16), 1.21),
+        small : (get-rems(16), 1.21),
+        medium: (get-rems(18), 1.2),
+        large : (get-rems(18), 1.2),
+);
+
+$h5: (
+        style : $h5-font-family,
+        sizes : $h5-font-sizes
+);
+
+// h6
+$h6-font-family: $space;
+$h6-font-sizes: (
+        null  : (get-rems(16), 1.21),
+        small : (get-rems(16), 1.21),
+        medium: (get-rems(18), 1.2),
+        large : (get-rems(18), 1.2),
+);
+$h6: (
+        style : $h6-font-family,
+        sizes : $h6-font-sizes
+);
+
+// Body
+$body-font-family: $stix;
+$body-font-sizes: (
+        null  : (get-rems(14), 1.2),
+        small : (get-rems(14), 1.2),
+        medium: (get-rems(16), 1.3),
+        large : (get-rems(16), 1.3)
+);
+$body: (
+        style : $body-font-family,
+        sizes : $body-font-sizes
+);
+
+$caption-font-family: $stix;
+$caption-font-sizes: (
+        null  : (get-rems(13), 1.08),
+        small : (get-rems(13), 1.08),
+        medium: (get-rems(13), 1.08),
+        large : (get-rems(13), 1.08),
+);
+$caption: (
+        style : $caption-font-family,
+        sizes : $caption-font-sizes
+);
+
+$lead-font-family: $stix;
+$lead-font-sizes: (
+        null  : (get-rems(16), 1.13),
+        small : (get-rems(16), 1.13),
+        medium: (get-rems(18), 1.14),
+        large : (get-rems(18), 1.14),
+);
+$lead: (
+        style : $lead-font-family,
+        sizes : $lead-font-sizes
+);
+
+$label-font-family: $stix;
+$label-font-sizes: (
+        null  : (get-rems(12), 1.13),
+        small : (get-rems(12), 1.13),
+        medium: (get-rems(14), 1.14),
+        large : (get-rems(14), 1.14),
+);
+$label: (
+        style : $label-font-family,
+        sizes : $label-font-sizes
+);
+
+// Button
+$button-font-family: $stix;
+$button-font-sizes: (
+        null  : (get-rems(12), 1.2),
+        small : (get-rems(12), 1.2),
+        medium: (get-rems(13), 1.2),
+        large : (get-rems(13), 1.2),
+);
+$buttontype: (
+        style : $button-font-family,
+        sizes : $button-font-sizes
+);
+
+// Blockquote
+$quote-font-family: $stix;
+$quote-font-sizes: (
+        null  : (get-rems(20), 1.2),
+        small : (get-rems(20), 1.2),
+        medium: (get-rems(22), 1.21),
+        large : (get-rems(22), 1.21),
+);
+$quote: (
+        style : $quote-font-family,
+        sizes : $quote-font-sizes
+);
+
+// dropcap
+$dropcap-font-family: $stix;
+$dropcap-font-sizes: (
+        null  : (get-rems(92), 0.67),
+        small : (get-rems(92), 0.67),
+        medium: (get-rems(192), 0.7),
+        large : (get-rems(192), 0.7),
+);
+$dropcap: (
+        style : $dropcap-font-family,
+        sizes : $dropcap-font-sizes
+);
